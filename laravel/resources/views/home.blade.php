@@ -1,22 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <title>Music Bands</title>
+@section('title', 'Music Bands')
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</head>
-
-<body class="container py-4">
-
-    <h1 class="mb-4">Music Bands</h1>
-
-    <div class="mb-4">
-        <a href="/login" class="btn btn-outline-primary me-2">Login</a>
-        <a href="/register" class="btn btn-outline-secondary">Register</a>
-    </div>
+@section('content')
 
     <div class="row">
         @foreach ($bands as $band)
@@ -49,6 +35,4 @@
         @endforeach
     </div>
 
-</body>
-
-</html>
+@endsection

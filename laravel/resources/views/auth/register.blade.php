@@ -1,38 +1,41 @@
 @extends('layouts.app')
 
-@section('title', 'Register')
+@section('title', 'Login')
 
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="card-title mb-3 text-center">Register</h3>
+                    <h3 class="card-title mb-3 text-center">Login</h3>
 
-                    <form method="POST" action="/register">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul class="mb-0">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    <form method="POST" action="/login">
                         @csrf
 
                         <div class="mb-3">
-                            <label>Name</label>
-                            <input type="text" name="name" class="form-control" required>
+                            <label for="email">Email</label>
+                            <input id="email" type="email" name="email" class="form-control"
+                                value="{{ old('email') }}" required>
                         </div>
 
                         <div class="mb-3">
-                            <label>Email</label>
-                            <input type="email" name="email" class="form-control" required>
+                            <label for="password">Password</label>
+                            <input id="password" type="password" name="password" class="form-control" required>
                         </div>
 
-                        <div class="mb-3">
-                            <label>Password</label>
-                            <input type="password" name="password" class="form-control" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label>Confirm Password</label>
-                            <input type="password" name="password_confirmation" class="form-control" required>
-                        </div>
-
-                        <button class="btn btn-success w-100">Register</button>
+                        <button class="btn btn-primary w-100">
+                            Login
+                        </button>
                     </form>
                 </div>
             </div>
