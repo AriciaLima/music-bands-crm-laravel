@@ -4,17 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Band extends Model
+class Album extends Model
 {
     protected $fillable = [
+        'band_id',
         'name',
-        'genre',
-        'formed_year',
         'image',
+        'release_date',
     ];
 
-    public function albums()
+    public function band()
     {
-        return $this->hasMany(Album::class);
+        return $this->belongsTo(Band::class);
     }
 }
