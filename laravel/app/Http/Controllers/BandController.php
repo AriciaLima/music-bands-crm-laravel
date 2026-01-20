@@ -7,10 +7,10 @@ use App\Models\Band;
 class BandController extends Controller
 {
     public function index()
-    {
-        $bands = Band::all();
-        return view('home', compact('bands'));
-    }
+{
+    $bands = Band::withCount('albums')->get();
+    return view('home', compact('bands'));
+}
 
     public function show(Band $band)
     {
