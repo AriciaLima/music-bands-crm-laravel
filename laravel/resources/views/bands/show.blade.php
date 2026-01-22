@@ -36,7 +36,7 @@
                         <div class="mt-3">
 
                             <a href="{{ route('bands.edit', $band) }}" class="btn btn-warning">
-                                Editar banda
+                                Editar
                             </a>
 
                             @if (auth()->user()->isAdmin())
@@ -44,7 +44,7 @@
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger">
-                                        Apagar banda
+                                        Apagar
                                     </button>
                                 </form>
                             @endif
