@@ -25,11 +25,32 @@
                         <strong>Formed:</strong> {{ $band->formed_year }}
                     </p>
 
+                    @auth
+                        <div class="mt-3">
+
+                            <a href="{{ route('bands.edit', $band) }}" class="btn btn-warning">
+                                Editar
+                            </a>
+
+                            @if (auth()->user()->isAdmin())
+                                <form method="POST" action="{{ route('bands.destroy', $band) }}" class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button class="btn btn-danger">
+                                        Apagar
+                                    </button>
+                                </form>
+                            @endif
+
+                        </div>
+                    @endauth
+
                 </div>
             </div>
 
             {{-- Albums --}}
-            <h4 class="mb-4">Albums</h4>
+            <h4 class="mb-4">Álbuns</h4>
 
             @if ($albums->count())
                 <div class="row g-4">
@@ -51,11 +72,10 @@
                                     @if ($album->release_date)
                                         <p class="text-muted mb-0">
                                             <small>
-                                                Release date: {{ $album->release_date }}
+                                                Data de lançamento: {{ $album->release_date }}
                                             </small>
                                         </p>
                                     @endif
-
                                 </div>
 
                             </div>
@@ -65,13 +85,13 @@
                 </div>
             @else
                 <p class="text-muted">
-                    This band has no albums.
+                    Esta banda não tem álbuns.
                 </p>
             @endif
 
             <div class="mt-4">
-                <a href="/" class="btn btn-secondary">
-                    Back to home
+                <a href="{{ route('home') }}" class="btn btn-secondary">
+                    Voltar
                 </a>
             </div>
 
