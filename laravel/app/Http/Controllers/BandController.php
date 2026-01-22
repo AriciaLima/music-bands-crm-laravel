@@ -52,6 +52,7 @@ class BandController extends Controller
             'genre' => 'nullable|string|max:255',
             'formed_year' => 'nullable|integer',
             'image' => 'nullable|string',
+            'description' => 'nullable|string',
         ]);
 
         $band->update($validated);

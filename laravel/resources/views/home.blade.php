@@ -1,38 +1,64 @@
 @extends('layouts.app')
 
-@section('title', 'Music Bands')
+@section('title', 'Bandas')
 
 @section('content')
 
-    <div class="row">
-        @foreach ($bands as $band)
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-                <a href="{{ route('bands.show', $band->id) }}" class="text-decoration-none text-dark">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10">
 
-                    <div class="card h-100">
-                        @if ($band->image)
-                            <img src="{{ $band->image }}" alt="{{ $band->name }}" class="card-img-top"
-                                style="height:200px; object-fit:cover;">
-                        @endif
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="mb-0">Bandas</h2>
 
-                        <div class="card-body text-center">
-                            <h5 class="card-title">{{ $band->name }}</h5>
-
-                            <p class="card-text mb-1">
-                                {{ $band->genre }}
-                            </p>
-
-                            <p class="card-text">
-                                <small class="text-muted">
-                                    Albums: {{ $band->albums_count }}
-                                </small>
-                            </p>
-                        </div>
-                    </div>
-
-                </a>
+                @auth
+                    @if (auth()->user()->isAdmin())
+                        <a href="{{ route('bands.create') }}" class="btn btn-success">
+                            Nova banda
+                        </a>
+                    @endif
+                @endauth
             </div>
-        @endforeach
+
+            @if ($bands->count())
+                <div class="row g-4">
+                    @foreach ($bands as $band)
+                        <div class="col-12 col-sm-6 col-md-4">
+
+                            <div class="card h-100 text-center">
+
+                                @if ($band->image)
+                                    <img src="{{ $band->image }}" alt="{{ $band->name }}" class="card-img-top"
+                                        style="height:220px; object-fit:cover;">
+                                @endif
+
+                                <div class="card-body">
+
+                                    <h5 class="card-title">
+                                        {{ $band->name }}
+                                    </h5>
+
+                                    <p class="text-muted mb-2">
+                                        Álbuns: {{ $band->albums_count }}
+                                    </p>
+
+                                    <a href="{{ route('bands.show', $band) }}" class="btn btn-primary btn-sm">
+                                        Ver detalhes
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    @endforeach
+                </div>
+            @else
+                <p class="text-muted">
+                    Não existem bandas registadas.
+                </p>
+            @endif
+
+        </div>
     </div>
 
 @endsection

@@ -46,6 +46,14 @@
                         </div>
 
                         <div class="mb-3">
+                            <label for="description" class="form-label">Descrição da banda</label>
+                            <textarea name="description" id="description" class="form-control" rows="4">{{ old('description', $band->description) }}</textarea>
+                            @error('description')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
                             <label for="image" class="form-label">Imagem da banda</label>
                             <input type="text" name="image" id="image" class="form-control"
                                 value="{{ old('image', $band->image) }}">

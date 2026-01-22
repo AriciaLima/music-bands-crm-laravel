@@ -11,6 +11,7 @@ class Band extends Model
         'genre',
         'formed_year',
         'image',
+        'description',
     ];
 
     public function albums()
