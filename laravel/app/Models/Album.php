@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Album extends Model
 {
@@ -16,5 +17,10 @@ class Album extends Model
     public function band()
     {
         return $this->belongsTo(Band::class);
+    }
+
+    public function getReleaseDateAttribute($value)
+    {
+        return Carbon::parse($value)->format('d-m-Y');
     }
 }

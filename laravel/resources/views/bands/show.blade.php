@@ -1,31 +1,81 @@
-<h1>{{ $band->name }}</h1>
+@extends('layouts.app')
 
-@if ($band->image)
-    <img src="{{ $band->image }}" alt="{{ $band->name }}" width="250">
-@endif
+@section('title', $band->name)
 
-<p>
-    <strong>Genre:</strong> {{ $band->genre }} <br>
-    <strong>Formed:</strong> {{ $band->formed_year }}
-</p>
+@section('content')
 
-<hr>
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10">
 
-<h2>Albums</h2>
+            {{-- Band info --}}
+            <div class="card mb-4">
+                <div class="card-body text-center">
 
-@if ($albums->count())
-    <ul>
-        @foreach ($albums as $album)
-            <li>
-                {{ $album->name }}
-                @if ($album->release_date)
-                    ({{ $album->release_date }})
-                @endif
-            </li>
-        @endforeach
-    </ul>
-@else
-    <p>This band has no albums.</p>
-@endif
+                    <h2 class="card-title mb-3">
+                        {{ $band->name }}
+                    </h2>
 
-<a href="/">← Back to home</a>
+                    @if ($band->image)
+                        <img src="{{ $band->image }}" alt="{{ $band->name }}" class="img-fluid rounded mb-3"
+                            style="max-width: 250px;">
+                    @endif
+
+                    <p class="mb-0">
+                        <strong>Genre:</strong> {{ $band->genre }} <br>
+                        <strong>Formed:</strong> {{ $band->formed_year }}
+                    </p>
+
+                </div>
+            </div>
+
+            {{-- Albums --}}
+            <h4 class="mb-4">Albums</h4>
+
+            @if ($albums->count())
+                <div class="row g-4">
+                    @foreach ($albums as $album)
+                        <div class="col-12 col-sm-6 col-md-4">
+
+                            <div class="card h-100">
+
+                                @if ($album->image)
+                                    <img src="{{ $album->image }}" alt="{{ $album->name }}" class="card-img-top"
+                                        style="height:220px; object-fit:cover;">
+                                @endif
+
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">
+                                        {{ $album->name }}
+                                    </h5>
+
+                                    @if ($album->release_date)
+                                        <p class="text-muted mb-0">
+                                            <small>
+                                                Release date: {{ $album->release_date }}
+                                            </small>
+                                        </p>
+                                    @endif
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    @endforeach
+                </div>
+            @else
+                <p class="text-muted">
+                    This band has no albums.
+                </p>
+            @endif
+
+            <div class="mt-4">
+                <a href="/" class="btn btn-secondary">
+                    Back to home
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+@endsection

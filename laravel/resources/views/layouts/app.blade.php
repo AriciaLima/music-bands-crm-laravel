@@ -22,9 +22,15 @@
                     <button class="btn btn-sm btn-outline-danger">Logout</button>
                 </form>
             @else
-                <a href="/login" class="btn btn-outline-primary">Login</a>
-                <a href="/register" class="btn btn-outline-secondary">Register</a>
+                <a href="{{ route('login') }}" class="btn btn-outline-primary">
+                    Login
+                </a>
+
+                <a href="{{ route('register') }}" class="btn btn-outline-secondary">
+                    Register
+                </a>
             @endauth
+
         </div>
     </header>
 

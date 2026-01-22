@@ -8,25 +8,24 @@
             <div class="card">
                 <div class="card-body">
                     <h3 class="card-title mb-3 text-center">Login</h3>
-
-                    <form method="POST" action="/login">
+                    <form method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <div class="mb-3">
-                            <label>Email</label>
-                            <input type="email" name="email" class="form-control" required>
+                            <label for="email">Email</label>
+                            <input id="email" type="email" name="email" class="form-control"
+                                value="{{ old('email') }}" required>
                         </div>
 
                         <div class="mb-3">
-                            <label>Password</label>
-                            <input type="password" name="password" class="form-control" required>
+                            <label for="password">Password</label>
+                            <input id="password" type="password" name="password" class="form-control" required>
                         </div>
 
-                        <button class="btn btn-primary w-100">Login</button>
+                        <button class="btn btn-primary w-100">
+                            Login
+                        </button>
                     </form>
-
                 </div>
             </div>
-        </div>
-    </div>
-@endsection
+        @endsection
