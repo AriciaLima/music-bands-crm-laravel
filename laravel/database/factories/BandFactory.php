@@ -17,7 +17,9 @@ class BandFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->unique()->words(2, true),
+            'genre' => fake()->word(),
+            'formed_year' => fake()->year(),
         ];
     }
 }

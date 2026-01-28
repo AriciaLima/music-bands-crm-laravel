@@ -14,7 +14,7 @@
 
                 <div class="card-body">
 
-                    <form method="POST" action="{{ route('bands.update', $band) }}">
+                    <form method="POST" action="{{ route('bands.update', $band) }}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -54,10 +54,22 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="image" class="form-label">Imagem da banda</label>
-                            <input type="text" name="image" id="image" class="form-control"
-                                value="{{ old('image', $band->image) }}">
-                            @error('image')
+                            <label for="image_url" class="form-label">Imagem (URL)</label>
+                            <input type="url" name="image_url" id="image_url" class="form-control"
+                                value="{{ old('image_url', $band->image) }}">
+                            @error('image_url')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div class="text-center mb-3">
+                            <strong>OU</strong>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="image_file" class="form-label">Upload de imagem</label>
+                            <input type="file" name="image_file" id="image_file" class="form-control">
+                            @error('image_file')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div>

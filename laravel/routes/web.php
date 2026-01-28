@@ -12,7 +12,14 @@ use App\Http\Controllers\AlbumController;
 | Visitantes e users não autenticados
 */
 Route::get('/', [BandController::class, 'index'])->name('home');
+
+// Admin routes - create forms
+Route::get('/bands/create', [BandController::class, 'create'])->middleware(['auth', 'admin'])->name('bands.create');
+Route::get('/albums/create', [AlbumController::class, 'create'])->middleware(['auth', 'admin'])->name('albums.create');
+
+// Public resource routes
 Route::resource('bands', BandController::class)->only(['index', 'show']);
+Route::resource('albums', AlbumController::class)->only(['show']);
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +49,6 @@ Route::middleware('auth')->group(function () {
 | Apenas admin
 */
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::resource('bands', BandController::class)->only(['create', 'store', 'destroy']);
-    Route::resource('albums', AlbumController::class)->only(['create', 'store', 'destroy']);
+    Route::resource('bands', BandController::class)->only(['store', 'destroy']);
+    Route::resource('albums', AlbumController::class)->only(['store', 'destroy']);
 });

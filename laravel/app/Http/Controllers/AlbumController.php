@@ -43,8 +43,15 @@ class AlbumController extends Controller
             'name' => 'required|string|max:255',
             'release_date' => 'nullable|date',
             'image' => 'nullable|string',
+            'image_file' => 'nullable|image|max:2048',
         ]);
 
+        if ($request->hasFile('image_file')) {
+            $validated['image'] = $request->file('image_file')->store('albums', 'public');
+        } elseif ($request->filled('image')) {
+            // Keep the existing image value from the form
+        }   
+        unset($validated['image_file']);
         $album->update($validated);
 
         return redirect()->route('bands.show', $validated['band_id']);

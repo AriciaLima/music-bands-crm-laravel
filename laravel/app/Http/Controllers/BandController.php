@@ -33,8 +33,17 @@ class BandController extends Controller
             'name' => 'required|string|max:255',
             'genre' => 'nullable|string|max:255',
             'formed_year' => 'nullable|integer',
-            'image' => 'nullable|string',
+            'image_url' => 'nullable|string',
+            'image_file' => 'nullable|image|max:2048',
         ]);
+
+        if ($request->hasFile('image_file')) {
+            $validated['image'] = $request->file('image_file')->store('bands', 'public');
+        } elseif ($request->filled('image_url')) {
+            $validated['image'] = $validated['image_url'];
+        }
+
+        unset($validated['image_url'], $validated['image_file']);
 
         Band::create($validated);
 
@@ -52,10 +61,16 @@ class BandController extends Controller
             'name' => 'required|string|max:255',
             'genre' => 'nullable|string|max:255',
             'formed_year' => 'nullable|integer',
-            'image' => 'nullable|string',
+            'image_url' => 'nullable|string',
+            'image_file' => 'nullable|image|max:2048',
             'description' => 'nullable|string',
         ]);
-
+        if ($request->hasFile('image_file')) {
+            $validated['image'] = $request->file('image_file')->store('bands', 'public');
+        } elseif ($request->filled('image_url')) {
+            $validated['image'] = $validated['image_url'];
+        }   
+        unset($validated['image_url'], $validated['image_file']);
         $band->update($validated);
 
         return redirect()->route('bands.show', $band);

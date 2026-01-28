@@ -17,7 +17,9 @@ class AlbumFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'band_id' => 1,
+            'name' => fake()->unique()->words(2, true),
+            'release_date' => fake()->date(),
         ];
     }
 }
