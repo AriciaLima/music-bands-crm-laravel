@@ -11,9 +11,7 @@ use App\Http\Controllers\AlbumController;
 |--------------------------------------------------------------------------
 | Visitantes e users não autenticados
 */
-
 Route::get('/', [BandController::class, 'index'])->name('home');
-
 Route::resource('bands', BandController::class)->only(['index', 'show']);
 
 /*
@@ -22,7 +20,6 @@ Route::resource('bands', BandController::class)->only(['index', 'show']);
 |--------------------------------------------------------------------------
 | Apenas utilizadores autenticados
 */
-
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware('auth')
     ->name('dashboard');
@@ -33,13 +30,10 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
 |--------------------------------------------------------------------------
 | User autenticado e admin
 */
-
 Route::middleware('auth')->group(function () {
     Route::resource('bands', BandController::class)->only(['edit', 'update']);
-
     Route::resource('albums', AlbumController::class)->only(['edit', 'update']);
 });
-Route::resource('bands', BandController::class)->only(['edit', 'update']);
 
 /*
 |--------------------------------------------------------------------------
@@ -47,9 +41,7 @@ Route::resource('bands', BandController::class)->only(['edit', 'update']);
 |--------------------------------------------------------------------------
 | Apenas admin
 */
-
-Route::middleware(['auth', 'isadmin'])->group(function () {
+Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('bands', BandController::class)->only(['create', 'store', 'destroy']);
-
     Route::resource('albums', AlbumController::class)->only(['create', 'store', 'destroy']);
 });
