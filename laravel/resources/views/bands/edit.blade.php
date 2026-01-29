@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Editar Banda')
+@section('title', 'Editar Artista')
 
 @section('content')
 

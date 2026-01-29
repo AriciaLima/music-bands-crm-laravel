@@ -16,9 +16,9 @@
                         @csrf
 
                         <div class="mb-3">
-                            <label class="form-label">Banda</label>
+                            <label class="form-label">Artista</label>
                             <select name="band_id" class="form-control" required>
-                                <option value="">Selecione uma banda</option>
+                                <option value="">Selecione um Artista</option>
                                 @foreach ($bands as $band)
                                     <option value="{{ $band->id }}">{{ $band->name }}</option>
                                 @endforeach

@@ -56,7 +56,7 @@
             </div>
 
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <h4 class="mb-0">Álbuns</h4>
+                <h4 class="mb-0">Álbuns do Artista</h4>
 
                 @auth
                     @if (auth()->user()->isAdmin())
@@ -126,7 +126,7 @@
                 </div>
             @else
                 <p class="text-muted">
-                    Esta banda não tem álbuns.
+                    Este artista não tem álbuns.
                 </p>
             @endif
 

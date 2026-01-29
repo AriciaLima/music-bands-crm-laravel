@@ -19,9 +19,9 @@
                         @method('PUT')
 
                         <div class="mb-3">
-                            <label for="band_id" class="form-label">Banda</label>
+                            <label for="band_id" class="form-label">Artista</label>
                             <select name="band_id" id="band_id" class="form-control" required>
-                                <option value="">Selecione uma banda</option>
+                                <option value="">Selecione um Artista</option>
                                 @foreach ($bands as $band)
                                     <option value="{{ $band->id }}"
                                         {{ old('band_id', $album->band_id) == $band->id ? 'selected' : '' }}>

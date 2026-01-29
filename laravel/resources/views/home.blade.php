@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Bandas')
+@section('title', 'Artistas')
 
 @section('content')
 
@@ -54,7 +54,7 @@
                 </div>
             @else
                 <p class="text-muted">
-                    Não existem bandas registadas.
+                    Não existem artistas registados.
                 </p>
             @endif
 

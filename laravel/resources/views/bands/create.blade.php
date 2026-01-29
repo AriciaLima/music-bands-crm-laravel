@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Criar Banda')
+@section('title', 'Criar Artista')
 
 @section('content')
 
@@ -10,7 +10,7 @@
             <div class="card">
                 <div class="card-body">
 
-                    <h2 class="mb-4">Criar novo artista</h2>
+                    <h2 class="mb-4">Criar novo Artista</h2>
 
                     <form method="POST" action="{{ route('bands.store') }}" enctype="multipart/form-data">
                         @csrf
