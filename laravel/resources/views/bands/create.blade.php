@@ -10,13 +10,13 @@
             <div class="card">
                 <div class="card-body">
 
-                    <h2 class="mb-4">Criar nova banda</h2>
+                    <h2 class="mb-4">Criar novo artista</h2>
 
                     <form method="POST" action="{{ route('bands.store') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="mb-3">
-                            <label class="form-label">Nome da banda</label>
+                            <label class="form-label">Nome</label>
                             <input type="text" name="name" class="form-control" required value="{{ old('name') }}">
                             @error('name')
                                 <div class="text-danger small mt-1">{{ $message }}</div>
@@ -25,7 +25,7 @@
 
                         <div class="mb-3">
                             <label class="form-label">Género</label>
-                            <input type="text" name="genre" class="form-control" value="{{ old('genre') }}">
+                            <input type="text" name="genre" class="form-control" value="{{ old('genre') }}" required>
                             @error('genre')
                                 <div class="text-danger small mt-1">{{ $message }}</div>
                             @enderror
@@ -33,7 +33,8 @@
 
                         <div class="mb-3">
                             <label class="form-label">Ano de formação</label>
-                            <input type="number" name="formed_year" class="form-control" value="{{ old('formed_year') }}">
+                            <input type="number" name="formed_year" class="form-control" value="{{ old('formed_year') }}"
+                                required>
                             @error('formed_year')
                                 <div class="text-danger small mt-1">{{ $message }}</div>
                             @enderror

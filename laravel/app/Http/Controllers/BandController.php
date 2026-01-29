@@ -31,10 +31,11 @@ class BandController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'genre' => 'nullable|string|max:255',
-            'formed_year' => 'nullable|integer',
+            'genre' => 'required|string|max:255',
+            'formed_year' => 'required|integer',
             'image_url' => 'nullable|string',
             'image_file' => 'nullable|image|max:2048',
+            'description' => 'nullable|string',
         ]);
 
         if ($request->hasFile('image_file')) {
@@ -59,8 +60,8 @@ class BandController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'genre' => 'nullable|string|max:255',
-            'formed_year' => 'nullable|integer',
+            'genre' => 'required|string|max:255',
+            'formed_year' => 'required|integer',
             'image_url' => 'nullable|string',
             'image_file' => 'nullable|image|max:2048',
             'description' => 'nullable|string',

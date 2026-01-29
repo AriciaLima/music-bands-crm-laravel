@@ -53,6 +53,18 @@
                             @enderror
                         </div>
 
+                        <div class="text-center mb-2">
+                            <strong>OU</strong>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Upload de imagem</label>
+                            <input type="file" name="image_file" class="form-control">
+                            @error('image_file')
+                                <div class="text-danger small mt-1">{{ $message }}</div>
+                            @enderror
+                        </div>
+
                         <div class="d-flex gap-2">
                             <button type="submit" class="btn btn-success">
                                 Guardar

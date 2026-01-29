@@ -22,7 +22,14 @@ class AlbumController extends Controller
             'name' => 'required|string|max:255',
             'release_date' => 'nullable|date',
             'image' => 'nullable|string',
+            'image_file' => 'nullable|image|max:2048',
         ]);
+
+        if ($request->hasFile('image_file')) {
+            $validated['image'] = $request->file('image_file')->store('albums', 'public');
+        }
+
+        unset($validated['image_file']);
 
         Album::create($validated);
 

@@ -9,7 +9,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h4>Editar banda</h4>
+                    <h4>Editar Artista</h4>
                 </div>
 
                 <div class="card-body">
@@ -19,7 +19,7 @@
                         @method('PUT')
 
                         <div class="mb-3">
-                            <label for="name" class="form-label">Nome da banda</label>
+                            <label for="name" class="form-label">Nome</label>
                             <input type="text" name="name" id="name" class="form-control"
                                 value="{{ old('name', $band->name) }}" required>
                             @error('name')
@@ -30,7 +30,7 @@
                         <div class="mb-3">
                             <label for="genre" class="form-label">Género</label>
                             <input type="text" name="genre" id="genre" class="form-control"
-                                value="{{ old('genre', $band->genre) }}">
+                                value="{{ old('genre', $band->genre) }}" required>
                             @error('genre')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
@@ -39,14 +39,14 @@
                         <div class="mb-3">
                             <label for="formed_year" class="form-label">Ano de formação</label>
                             <input type="number" name="formed_year" id="formed_year" class="form-control"
-                                value="{{ old('formed_year', $band->formed_year) }}">
+                                value="{{ old('formed_year', $band->formed_year) }}" required>
                             @error('formed_year')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div>
 
                         <div class="mb-3">
-                            <label for="description" class="form-label">Descrição da banda</label>
+                            <label for="description" class="form-label">Descrição</label>
                             <textarea name="description" id="description" class="form-control" rows="4">{{ old('description', $band->description) }}</textarea>
                             @error('description')
                                 <p class="text-danger">{{ $message }}</p>
@@ -76,7 +76,7 @@
 
                         @if ($band->image)
                             <div class="mb-3 text-center">
-                                <img src="{{ $band->image }}" alt="{{ $band->name }}" class="img-fluid rounded"
+                                <img src="{{ $band->image_url }}" alt="{{ $band->name }}" class="img-fluid rounded"
                                     style="max-width: 250px;">
                             </div>
                         @endif

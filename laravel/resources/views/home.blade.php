@@ -8,12 +8,12 @@
         <div class="col-12 col-lg-10">
 
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2 class="mb-0">Bandas</h2>
+                <h2 class="mb-0">Artistas</h2>
 
                 @auth
                     @if (auth()->user()->isAdmin())
                         <a href="{{ route('bands.create') }}" class="btn btn-success">
-                            Nova banda
+                            Novo artista
                         </a>
                     @endif
                 @endauth
@@ -27,7 +27,7 @@
                             <div class="card h-100 text-center">
 
                                 @if ($band->image)
-                                    <img src="{{ $band->image }}" alt="{{ $band->name }}" class="card-img-top"
+                                    <img src="{{ $band->image_url }}" alt="{{ $band->name }}" class="card-img-top"
                                         style="height:220px; object-fit:cover;">
                                 @endif
 

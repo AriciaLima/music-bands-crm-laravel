@@ -19,6 +19,22 @@
                         @method('PUT')
 
                         <div class="mb-3">
+                            <label for="band_id" class="form-label">Banda</label>
+                            <select name="band_id" id="band_id" class="form-control" required>
+                                <option value="">Selecione uma banda</option>
+                                @foreach ($bands as $band)
+                                    <option value="{{ $band->id }}"
+                                        {{ old('band_id', $album->band_id) == $band->id ? 'selected' : '' }}>
+                                        {{ $band->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('band_id')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
                             <label for="name" class="form-label">Nome do álbum</label>
                             <input type="text" name="name" id="name" class="form-control"
                                 value="{{ old('name', $album->name) }}" required>
@@ -59,7 +75,7 @@
 
                         @if ($album->image)
                             <div class="mb-3 text-center">
-                                <img src="{{ $album->image }}" alt="{{ $album->name }}" class="img-fluid rounded"
+                                <img src="{{ $album->image_url }}" alt="{{ $album->name }}" class="img-fluid rounded"
                                     style="max-width: 200px;">
                             </div>
                         @endif

@@ -15,7 +15,7 @@
                     </h2>
 
                     @if ($band->image)
-                        <img src="{{ $band->image }}" alt="{{ $band->name }}" class="img-fluid rounded mb-3"
+                        <img src="{{ $band->image_url }}" alt="{{ $band->name }}" class="img-fluid rounded mb-3"
                             style="max-width: 250px;">
                     @endif
 
@@ -75,7 +75,7 @@
                             <div class="card h-100">
 
                                 @if ($album->image)
-                                    <img src="{{ $album->image }}" alt="{{ $album->name }}" class="card-img-top"
+                                    <img src="{{ $album->image_url }}" alt="{{ $album->name }}" class="card-img-top"
                                         style="height:220px; object-fit:cover;">
                                 @endif
 
