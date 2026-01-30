@@ -12,7 +12,7 @@ class IsAdmin
     {
         $user = $request->user();
 
-        if (!$user || $user->user_type !== 'admin') {
+        if (! $user || $user->user_type !== 'admin') {
             abort(403);
         }
 

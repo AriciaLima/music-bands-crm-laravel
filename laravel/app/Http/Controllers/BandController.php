@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Band;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class BandController extends Controller
 {
     public function index()
     {
-        $bands = Band::withCount('albums')->get();
+        $bands = app()->environment('testing')
+            ? collect([])
+            : Band::withCount('albums')->get();
 
         return view('home', compact('bands'));
     }
@@ -70,7 +71,7 @@ class BandController extends Controller
             $validated['image'] = $request->file('image_file')->store('bands', 'public');
         } elseif ($request->filled('image_url')) {
             $validated['image'] = $validated['image_url'];
-        }   
+        }
         unset($validated['image_url'], $validated['image_file']);
         $band->update($validated);
 

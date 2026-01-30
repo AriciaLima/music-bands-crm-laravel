@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Band;
 use App\Models\Album;
+use App\Models\Band;
 
 class DashboardController extends Controller
 {

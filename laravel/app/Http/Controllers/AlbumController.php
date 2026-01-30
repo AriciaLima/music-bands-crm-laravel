@@ -57,7 +57,7 @@ class AlbumController extends Controller
             $validated['image'] = $request->file('image_file')->store('albums', 'public');
         } elseif ($request->filled('image')) {
             // Keep the existing image value from the form
-        }   
+        }
         unset($validated['image_file']);
         $album->update($validated);
 

@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\BandController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\AlbumController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
