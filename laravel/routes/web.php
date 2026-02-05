@@ -52,3 +52,13 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('bands', BandController::class)->only(['store', 'destroy']);
     Route::resource('albums', AlbumController::class)->only(['store', 'destroy']);
 });
+
+/*
+|--------------------------------------------------------------------------
+| Fallback
+|--------------------------------------------------------------------------
+| Captura qualquer rota não definida
+*/
+Route::fallback(function () {
+    return redirect('/');
+});

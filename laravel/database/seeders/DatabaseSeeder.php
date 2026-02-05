@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Users normais fake
-        User::factory(5)->create([
+        User::factory(2)->create([
             'user_type' => 'user',
         ]);
 
